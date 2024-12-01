@@ -7,5 +7,13 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
+
+        String[] command = input.split(" ");
+        switch(command[0]) {
+
+            default:
+                System.out.print(command[0]+": not found");
+        }
+
     }
 }
