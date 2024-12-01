@@ -5,6 +5,7 @@ public class Main {
         // Uncomment this block to pass the first stage
          System.out.print("$ ");
 
+
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
@@ -12,7 +13,8 @@ public class Main {
         switch(command[0]) {
 
             default:
-                System.out.print(command[0]+": not found");
+                System.out.println(command[0]+": not found");
+
         }
 
     }
