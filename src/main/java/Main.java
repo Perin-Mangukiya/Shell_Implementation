@@ -7,13 +7,9 @@ public class Main {
             System.out.print("$ ");
             String input = scanner.nextLine();
 
-            String[] command = input.split(" ");
-            switch (command[0]) {
+            if(input.equals("exit 0")) break;
 
-                default:
-                    System.out.println(command[0] + ": not found");
-
-            }
+            System.out.println(input + ": not found");
         }
     }
 }
