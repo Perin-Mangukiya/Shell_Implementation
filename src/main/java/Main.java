@@ -70,7 +70,9 @@ public class Main {
                         }
                     }
                     break;
-
+                case "pwd":
+                    System.getProperty("user.dir");
+                    break;
                 default:
                     String path = getPath(command);
                     if(path==null) {
