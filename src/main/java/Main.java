@@ -72,7 +72,17 @@ public class Main {
                     }
                     break;
                 default:
-                    System.out.println(input+": command not found");
+                    String path = getPath(command);
+                    if(path==null) {
+                        System.out.println(input+": command not found");
+                    }
+                    else {
+                        // Run a program in shell
+                        String fullPath = path + parameter;
+                        Process p = Runtime.getRuntime().exec(fullPath.split(" "));
+                        // prints the output of executed program to the console
+                        p.getInputStream().transferTo(System.out);
+                    }
             }
         }
     }
