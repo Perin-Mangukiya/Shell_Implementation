@@ -76,9 +76,13 @@ public class Main {
                     System.out.println(cwd);
                     break;
                 case "cd":
+                    if(!parameter.startsWith("/")) {
+                        parameter = cwd + "/" + parameter;
+                    }
                     // for absolute paths - ex: /usr/local/bin
                     if(Files.isDirectory(Path.of(parameter))) {
-                        cwd = parameter;
+                        // normalize() is used to resolve ..(parent), .(current directory)
+                        cwd = Path.of(parameter).normalize().toString();
                     }
                     else {
                         System.out.println("cd: "+parameter+": No Such file or directory");
