@@ -1,35 +1,61 @@
-[![progress-banner](https://backend.codecrafters.io/progress/shell/77ec2dee-019f-4960-95a1-ae0144f40b55)](https://app.codecrafters.io/users/codecrafters-bot?r=2qF)
+[![progress-banner](https://backend.codecrafters.io/progress/shell/77ec2dee-019f-4960-95a1-ae0144f40b55)]()
+# Shell Implementation Project
 
-This is a starting point for Java solutions to the
-["Build Your Own Shell" Challenge](https://app.codecrafters.io/courses/shell/overview).
+## Overview
+This project is a Linux-based shell developed in Java that implements basic command-line functionalities such as `echo`, `exit`, and `cd`. Additionally, it features advanced capabilities like REPL (Read-Eval-Print Loop) functionality, quoting mechanisms, and seamless directory navigation.
 
-In this challenge, you'll build your own POSIX compliant shell that's capable of
-interpreting shell commands, running external programs and builtin commands like
-cd, pwd, echo and more. Along the way, you'll learn about shell command parsing,
-REPLs, builtin commands, and more.
+## Features
+- **Command Execution**: Supports basic Unix commands like `echo`, `exit`, and `cd`.
+- **REPL (Read-Eval-Print Loop)**: Provides an interactive loop to input commands, evaluate them, and display the results.
+- **Quoting Mechanisms**: Handles single and double quotes to manage complex command inputs.
+- **Directory Navigation**: Allows users to navigate the file system using relative and absolute paths.
+- **Input/Output Redirection**: Supports redirection of input (`<`) and output (`>`).
+- **Custom Commands**: Implements additional commands specific to this shell.
+- **Error Handling**: Provides user-friendly error messages for invalid commands or arguments.
 
-**Note**: If you're viewing this repo on GitHub, head over to
-[codecrafters.io](https://codecrafters.io) to try the challenge.
+## Technology Stack
+- **Programming Language**: Java
+- **Development Tools**: Java SE Development Kit (JDK), IDE/Text Editor (e.g., IntelliJ IDEA, Eclipse, or VS Code)
+- **Operating System**: Linux-based (tested on various distributions)
 
-# Passing the first stage
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd shell-implementation
+   ```
+3. Compile the Java files:
+   ```bash
+   javac *.java
+   ```
+4. Run the shell:
+   ```bash
+   java Shell
+   ```
 
-The entry point for your `shell` implementation is in `src/main/java/Main.java`.
-Study and uncomment the relevant code, and push your changes to pass the first
-stage:
+## Usage
+1. Start the shell by running the project.
+2. Type commands at the prompt and press `Enter` to execute.
+3. Use `exit` to terminate the shell.
 
-```sh
-git commit -am "pass 1st stage" # any msg
-git push origin master
-```
+### Example Commands
+- Print a message:
+  ```bash
+  echo "Hello, World!"
+  ```
+- Change the working directory:
+  ```bash
+  cd /path/to/directory
+  ```
+- Exit the shell:
+  ```bash
+  exit
+  ```
+- Use quotes to manage complex inputs:
+  ```bash
+  echo "This is a 'quoted' message."
+  ```
 
-Time to move on to the next stage!
-
-# Stage 2 & beyond
-
-Note: This section is for stages 2 and beyond.
-
-1. Ensure you have `mvn` installed locally
-1. Run `./your_program.sh` to run your program, which is implemented in
-   `src/main/java/Main.java`.
-1. Commit your changes and run `git push origin master` to submit your solution
-   to CodeCrafters. Test output will be streamed to your terminal.
