@@ -4,7 +4,6 @@ import java.nio.file.Path;
 
 public class Main {
     private static String getPath(String paramenter) {
-        System.out.println(Arrays.toString(System.getenv("PATH").split(":")));
         for(String path: System.getenv("PATH").split(":")) {
             // Constructs full path "path/parameter"
             Path fullPath = Path.of(path, paramenter);
@@ -23,6 +22,9 @@ public class Main {
         set.add("echo");
         set.add("exit");
         set.add("type");
+        set.add("pwd");
+        set.add("cd");
+        String cwd = Path.of("").toAbsolutePath().toString();
 
         while(true) {
             System.out.print("$ ");
@@ -71,7 +73,16 @@ public class Main {
                     }
                     break;
                 case "pwd":
-                    System.getProperty("user.dir");
+                    System.out.println(cwd);
+                    break;
+                case "cd":
+                    // for absolute paths - ex: /usr/local/bin
+                    if(Files.isDirectory(Path.of(parameter))) {
+                        cwd = parameter;
+                    }
+                    else {
+                        System.out.println("cd: "+parameter+": No Such file or directory");
+                    }
                     break;
                 default:
                     String path = getPath(command);
