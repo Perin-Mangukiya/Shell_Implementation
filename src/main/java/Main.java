@@ -76,8 +76,13 @@ public class Main {
                     System.out.println(cwd);
                     break;
                 case "cd":
-                    if(!parameter.startsWith("/")) {
+                    if(parameter.startsWith(".")) {
                         parameter = cwd + "/" + parameter;
+                    }
+                    // for home directory
+                    if(parameter.charAt(0)=='~') {
+                        // it will not word for windows as it does not have home directory
+                        parameter = parameter.replace("~", System.getenv("HOME"));
                     }
                     // for absolute paths - ex: /usr/local/bin
                     if(Files.isDirectory(Path.of(parameter))) {
