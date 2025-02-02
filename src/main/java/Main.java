@@ -70,6 +70,14 @@ public class Main {
                     sb = new StringBuilder();
 
                     while(i<inputSize && !Character.isWhitespace(input.charAt(i))) {
+                        // Backslash outside quotes
+                        if(input.charAt(i)=='\\') {
+                            // if \ is not followed by any character
+                            if(i==inputSize-1) continue;
+                            sb.append(input.charAt(i+1));
+                            i+=2;
+                            continue;
+                        }
                         sb.append(input.charAt(i));
                         i++;
                     }
