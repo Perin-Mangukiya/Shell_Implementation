@@ -42,6 +42,8 @@ public class Main {
                 }
 
                 // get single quoted args
+                // Also handles backslash within single quotes
+                // as enclosing in single quote preserves literal value, no special meaning for backslash
                 if(i<inputSize && input.charAt(i)=='\'') {
                     i++;
                     sb = new StringBuilder();
