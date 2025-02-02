@@ -29,7 +29,7 @@ public class Main {
             StringBuilder sb = new StringBuilder();
 
             while(i<inputSize) {
-                while(Character.isWhitespace(input.charAt(i))) {
+                while(i<inputSize && Character.isWhitespace(input.charAt(i))) {
                     i++;
                 }
                 // fill the command
@@ -41,12 +41,24 @@ public class Main {
                     command = sb.toString();
                 }
 
-                // get quoted args
-                if(input.charAt(i)=='\'') {
+                // get single quoted args
+                if(i<inputSize && input.charAt(i)=='\'') {
                     i++;
                     sb = new StringBuilder();
 
-                    while(i<inputSize && i!='\'') {
+                    while(i<inputSize && input.charAt(i)!='\'') {
+                        sb.append(input.charAt(i));
+                        i++;
+                    }
+                    argsList.add(sb.toString());
+                }
+
+                // get double quoted args
+                if(i<inputSize && input.charAt(i)=='\"') {
+                    i++;
+                    sb = new StringBuilder();
+
+                    while(i<inputSize && input.charAt(i)!='\"') {
                         sb.append(input.charAt(i));
                         i++;
                     }
@@ -54,7 +66,7 @@ public class Main {
                 }
 
                 // get unquoted args
-                if(input.charAt(i)!='\'') {
+                if(i<inputSize && input.charAt(i)!='\'' && input.charAt(i)!='\"' && !Character.isWhitespace(input.charAt(i))) {
                     sb = new StringBuilder();
 
                     while(i<inputSize && !Character.isWhitespace(input.charAt(i))) {
@@ -70,7 +82,6 @@ public class Main {
 
             String[] argsArr = argsList.toArray(new String[0]);
 
-
             switch(command) {
                 case "exit":
                     ExitCommand exit = new ExitCommand(input, argsArr);
@@ -79,13 +90,13 @@ public class Main {
                     EchoCommand echo = new EchoCommand(input, argsArr);
                     break;
                 case "type":
-                    TypeCommand tc = new TypeCommand(input, args, set);
+                    TypeCommand tc = new TypeCommand(input, argsArr, set);
                     break;
                 case "pwd":
                     PrintCurrentWorkingDirectory pcwd = new PrintCurrentWorkingDirectory(cwd);
                     break;
                 case "cd":
-                    ChangeDirectoryCommand cdc = new ChangeDirectoryCommand(input,args, cwd);
+                    ChangeDirectoryCommand cdc = new ChangeDirectoryCommand(input,argsArr, cwd);
                     break;
                 default:
                     UnknownCommand uc = new UnknownCommand(command, input);

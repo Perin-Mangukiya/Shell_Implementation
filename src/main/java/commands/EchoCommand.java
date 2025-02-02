@@ -5,13 +5,9 @@ public class EchoCommand {
         // print string: echo 'hello'
         // print string: echo hello
 
-        int i=0;
-        while(!Character.isWhitespace(input.charAt(i))) {
-            i++;
+        for(String arg: args) {
+            System.out.print(arg+" ");
         }
-        while(Character.isWhitespace(input.charAt(i))) {
-            i++;
-        }
-        System.out.println(input.substring(i));
+        System.out.println();
     }
 }

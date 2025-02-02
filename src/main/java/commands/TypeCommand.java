@@ -6,7 +6,9 @@ import java.nio.file.Path;
 
 public class TypeCommand {
     public TypeCommand(String input, String args[], Set<String> commandSet) {
-        for(String arg: args) {
+        for(int i=0; i<args.length; i++) {
+            String arg = args[i];
+
             // for builtins
             if(commandSet.contains(arg)) {
                 System.out.println(arg + " is a shell builtin");
