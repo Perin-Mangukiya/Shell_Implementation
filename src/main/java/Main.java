@@ -61,6 +61,20 @@ public class Main {
                     sb = new StringBuilder();
 
                     while(i<inputSize && input.charAt(i)!='\"') {
+                        // Backslash outside quotes
+                        // backslash retains special meaning for \, $, `, " and newline(not implemented)
+                        if(input.charAt(i)=='\\' && i+1<inputSize && (
+                                input.charAt(i+1)=='$' ||
+                                input.charAt(i+1)=='`' ||
+                                input.charAt(i+1)=='"' ||
+                                input.charAt(i+1)=='\\'
+                        )) {
+                            // if \ is not followed by any character
+                            if(i==inputSize-1) continue;
+                            sb.append(input.charAt(i+1));
+                            i+=2;
+                            continue;
+                        }
                         sb.append(input.charAt(i));
                         i++;
                     }
